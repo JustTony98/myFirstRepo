@@ -61,5 +61,12 @@ console.log(typeof screenPrice);
 console.log(typeof adaptive);
 console.log(screens.length);
 console.log(servicePercentPrice);
-
 console.log("Типы экранов:", screens);
+console.log(
+  "Стоимость верстки экранов " +
+    screenPrice +
+    " рублей" +
+    " Стоимость разработки сайта " +
+    fullPrice +
+    " рублей"
+);
