@@ -1,18 +1,34 @@
-let title = "myFirstRepo";
-let screens = "Простые, Сложные, Интерактивные";
-let screenPrice = 20000;
-let rollback = 1500;
-let fullPrice = 100000;
-let adaptive = true;
+"use strict";
 
-console.log(typeof title);
-console.log(typeof fullPrice);
-console.log(typeof adaptive);
-console.log(
-  `Стоимость верстки экранов ${screenPrice} рублей, \nСтоимость разработки сайтов ${fullPrice} рублей`
+let title = prompt("Как называется ваш проект?");
+let screens = prompt(
+  "Какие типы экранов нужно разработать? (например: Простые, Сложные, Интерактивные)"
 );
-console.log(screens.toLowerCase().split(", "));
-console.log(fullPrice * (rollback / 100));
+let screenPrice = +prompt("Сколько будет стоить данная работа?");
+let adaptive = confirm("Нужен ли адаптив на сайте?");
+let service1 = prompt("Какой дополнительный тип услуги нужен?");
+let servicePrice1 = +prompt("Сколько это будет стоить?");
+let service2 = prompt("Какой дополнительный тип услуги нужен?");
+let servicePrice2 = +prompt("Сколько это будет стоить?");
+let fullPrice = screenPrice + servicePrice1 + servicePrice2;
+let rollback = 1500;
+let servicePercentPrice = Math.ceil(fullPrice - rollback);
+console.log(
+  "Итоговая стоимость за вычетом отката: " + servicePercentPrice + " руб."
+);
+if (fullPrice > 30000) {
+  console.log("Даем скидку в 10%");
+} else if (fullPrice > 15000 && fullPrice <= 30000) {
+  console.log("Даем скидку в 5%");
+} else if (fullPrice > 0 && fullPrice <= 15000) {
+  console.log("Скидка не предусмотрена");
+} else if (fullPrice <= 0) {
+  console.log("Что-то пошло не так");
+}
 
-alert("Предъявите документики");
-console.log("Документики отсутствуют");
+console.log("Название проекта:", title);
+console.log("Типы экранов:", screens);
+console.log("Стоимость экранов:", screenPrice);
+console.log("Нужен адаптив:", adaptive);
+console.log("Доп. услуга 1:", service1, "-", servicePrice1);
+console.log("Доп. услуга 2:", service2, "-", servicePrice2);
