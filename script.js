@@ -12,6 +12,15 @@ const appData = {
   service1: "",
   service2: "",
 
+  start: function () {
+    appData.asking();
+    appData.allServicePrices = appData.getAllServicePrices();
+    appData.fullPrice = appData.getFullPrice();
+    appData.servicePercentPrice = appData.getServicePercentPrice();
+    appData.title = appData.getTitle();
+    appData.logger();
+  },
+
   isNumber: function (num) {
     return !isNaN(parseFloat(num) && isFinite(num));
   },
@@ -23,7 +32,7 @@ const appData = {
     );
     do {
       appData.screenPrice = prompt("Сколько будет стоить данная работа?");
-    } while (!isNumber(appData.screenPrice));
+    } while (!appData.isNumber(appData.screenPrice));
     appData.screenPrice = +appData.screenPrice;
     appData.adaptive = confirm("Нужен ли адаптив на сайте?");
   },
@@ -37,7 +46,7 @@ const appData = {
 
       do {
         servicePrice = prompt("Сколько это будет стоить?");
-      } while (!isNumber(servicePrice));
+      } while (!appData.isNumber(servicePrice));
 
       servicePrice = +servicePrice;
       sum += servicePrice;
@@ -80,18 +89,8 @@ const appData = {
   },
 
   logger: function () {
-    for (let key in appData) {
-      cpnsole.log(`${key}: ${appData[key]}`);
-    }
-  },
-
-  start: function () {
-    appData.asking();
-    appData.allServicePrices = appData.getAllServicePrices();
-    appData.fullPrice = appData.getFullPrice();
-    appData.servicePercentPrice = appData.getServicePercentPrice();
-    appData.title = appData.getTitle();
-    appData.logger();
+    console.log(appData.fullPrice);
+    console.log(appData.servicePercentPrice);
   },
 };
 
